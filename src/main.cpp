@@ -269,7 +269,7 @@ static void register_callbacks() {
 
 static void add_dispatchers() {
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:toggle", dispatch_toggle_view);
-    HyprlandAPI:addDispatcher(PHANDLE, "hyprtasking:open", dispatch_open_view);
+    HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:open", dispatch_open_view);
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:close", dispatch_close_view);
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:move", dispatch_move);
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:killhovered", dispatch_kill_hover);
