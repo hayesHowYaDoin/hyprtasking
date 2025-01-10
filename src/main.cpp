@@ -45,6 +45,28 @@ static SDispatchResult dispatch_toggle_view(std::string arg) {
     return {};
 }
 
+static SDispatchResult dispatch_open_view(std::string arg) {
+    if (ht_manager == nullptr)
+        return {};
+
+    if (arg == "all") {
+        ht_manager->show_all_views();
+    } else if (arg == "cursor") {
+        ht_manager->show_cursor_view();
+    }
+
+    return {};
+}
+
+static SDispatchResult dispatch_close_view(std::string arg) {
+    if (ht_manager == nullptr)
+        return {};
+
+    ht_manager->hide_all_views();
+
+    return {};
+}
+
 static SDispatchResult dispatch_move(std::string arg) {
     if (ht_manager == nullptr)
         return {};
@@ -247,6 +269,8 @@ static void register_callbacks() {
 
 static void add_dispatchers() {
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:toggle", dispatch_toggle_view);
+    HyprlandAPI:addDispatcher(PHANDLE, "hyprtasking:open", dispatch_open_view);
+    HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:close", dispatch_close_view);
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:move", dispatch_move);
     HyprlandAPI::addDispatcher(PHANDLE, "hyprtasking:killhovered", dispatch_kill_hover);
 }
